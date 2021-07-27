@@ -4,6 +4,8 @@ namespace HazardPointer
 {
     class HazPtrObject
     {
+        public:
+            void retire();
 
     };
 }
