@@ -1,4 +1,5 @@
 #pragma once
+#include <atomic>
 
 namespace HazardPointer
 {
@@ -9,7 +10,7 @@ namespace HazardPointer
             // T* refers to the entity the hazard pointer
             // is guarding.
             void protect(T* ptr);
-            
-            T* d_ptr;
+
+            std::atomic<T*> d_ptr;
     };
 }

@@ -2,7 +2,8 @@
 
 namespace HazardPointer
 {
-    HazPtr* HazPtrDomain::acquire() const 
+    template <class T>
+    HazPtr<T>* HazPtrDomain<T>::acquire() const 
     {
         // TODO
     }

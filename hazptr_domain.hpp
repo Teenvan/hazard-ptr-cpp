@@ -4,12 +4,13 @@
 
 namespace HazardPointer
 {
+    template <class T>
     // Holds the linked list of HazPtrs
     class HazPtrDomain
     {
         public:
-            HazPtr* acquire() const;
-            HazPtr hazptrs;
+            HazPtr<T>* acquire() const;
+            HazPtr<T> hazptrs;
             Retired retired;
     };
 }
