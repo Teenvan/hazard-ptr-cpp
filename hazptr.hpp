@@ -12,5 +12,8 @@ namespace HazardPointer
             void protect(T* ptr);
 
             std::atomic<T*> d_ptr;
+            std::atomic<HazPtr<T>> next;
+            // Bool active that tells us whether to reuse them or not
+            std::atomic<bool> active;
     };
 }

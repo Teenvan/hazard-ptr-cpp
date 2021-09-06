@@ -13,7 +13,7 @@ namespace HazardPointer
     to [HazPtrObject::retire()]
     */
     template<class T>
-    T* HazPtrHolder<T>::load(const std::atomic<T*>& src) noexcept
+    T* HazPtrHolder<T>::load(const std::atomic<T*>& src)
     {
 
         if (d_hazptr == nullptr)
@@ -35,9 +35,29 @@ namespace HazardPointer
                 return ptr;
             } else {
                 ptr = ptr2;
-            }
+            } 
         }
 
         return ptr;
+    }
+
+    template <class T>
+    void HazPtrHolder<T>::reset()
+    {
+        if (d_hazptr != nullptr)
+        {
+            // Make my hazard ptr point to nothing again
+            d_hazptr->d_ptr.store(nullptr, std::memory_order_seq_cst);
+        }
+    }
+
+    template <class T>
+    void HazPtrHolder<T>::drop() 
+    {
+        reset();
+        if (d_hazptr != nullptr)
+        {
+            d_hazptr->active.store(false, std::memory_order_seq_cst);
+        }
     }
 }

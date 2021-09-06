@@ -11,6 +11,8 @@ namespace HazardPointer
         public:
             // Protects an object pointed to by an atomic source
             T* load(const std::atomic<T*>& src) noexcept;
+            void drop();
+            void reset();
 
         private:
             HazPtr* d_hazptr = nullptr;
