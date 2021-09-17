@@ -7,6 +7,10 @@ namespace HazardPointer
     class HazPtr
     {
         public:
+
+            // Constructor
+            HazPtr(T* ptr, HazPtr<T> next, bool active); 
+
             // T* refers to the entity the hazard pointer
             // is guarding.
             void protect(T* ptr);

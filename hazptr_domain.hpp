@@ -1,7 +1,7 @@
 #pragma once
 #include "hazptr.hpp"
 #include "hazptrs.hpp"
-#include "retired.hpp"
+#include "retired_list.hpp"
 #include <memory>
 
 namespace HazardPointer
@@ -15,7 +15,7 @@ namespace HazardPointer
             void retire(D d, T* ptr) const;
             HazPtrs<T> hazptrs;
             HazPtr<T> retired_hazptrs;
-            Retired retired;
+            RetiredList<T> retired;
         private:
             D deleter;
     };
